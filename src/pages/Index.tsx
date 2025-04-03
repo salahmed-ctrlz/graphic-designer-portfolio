@@ -1,9 +1,35 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import Layout from '@/components/Layout'
 import { Link } from 'react-router-dom'
 import "../styles/fonts.css";
+
+// Temporary MainLayout component until we properly import it
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="min-h-screen bg-background">
+      <header className="fixed top-0 left-0 right-0 h-16 border-b bg-background/80 backdrop-blur-md z-40">
+        <div className="container h-full flex items-center justify-between">
+          <div className="font-bold text-xl">Portfolio</div>
+          <nav className="hidden md:flex items-center gap-8">
+            <Link to="/" className="text-sm font-medium hover:text-primary">Home</Link>
+            <Link to="/selected-work" className="text-sm font-medium hover:text-primary">Work</Link>
+            <Link to="/about" className="text-sm font-medium hover:text-primary">About</Link>
+            <Link to="/contact" className="text-sm font-medium hover:text-primary">Contact</Link>
+          </nav>
+        </div>
+      </header>
+      <main className="pt-16">
+        {children}
+      </main>
+      <footer className="py-8 border-t mt-20">
+        <div className="container text-center text-sm text-muted-foreground">
+          © {new Date().getFullYear()} Portfolio. All rights reserved.
+        </div>
+      </footer>
+    </div>
+  )
+}
 
 // Sample project data
 const projectsData = [

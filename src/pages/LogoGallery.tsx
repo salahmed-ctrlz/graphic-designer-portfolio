@@ -4,18 +4,18 @@ import ScrollProgress from '@/components/ui/scroll-progress'; // Importing Scrol
 
 
 const logos = [
-  { id: 1, image: 'public/SelectedProjects/DesertOasis.png' },
-  { id: 2, image: 'public/SelectedProjects/EchoElement.png' },
-  { id: 3, image: 'public/SelectedProjects/LuminousLegacy.png' },
-  { id: 4, image: 'public/SelectedProjects/NebulaNetworks.png' },
-  { id: 5, image: 'public/SelectedProjects/SaharaSolar.png' },
-  { id: 6, image: 'public/SelectedProjects/UrbanZenith.png' },
-  { id: 7, image: 'public/SelectedProjects/DesertOasis.png' },
-  { id: 8, image: 'public/SelectedProjects/EchoElement.png' },
-  { id: 9, image: 'public/SelectedProjects/LuminousLegacy.png' },
-  { id: 10, image: 'public/SelectedProjects/NebulaNetworks.png' },
-  { id: 11, image: 'public/SelectedProjects/SaharaSolar.png' },
-  { id: 12, image: 'public/SelectedProjects/UrbanZenith.png' },
+  { id: 1, image: 'src/assets/SelectedProjects/DesertOasis.png' },
+  { id: 2, image: 'src/assets/SelectedProjects/EchoElement.png' },
+  { id: 3, image: 'src/assets/SelectedProjects/LuminousLegacy.png' },
+  { id: 4, image: 'src/assets/SelectedProjects/NebulaNetworks.png' },
+  { id: 5, image: 'src/assets/SelectedProjects/SaharaSolar.png' },
+  { id: 6, image: 'src/assets/SelectedProjects/UrbanZenith.png' },
+  { id: 7, image: 'src/assets/SelectedProjects/DesertOasis.png' },
+  { id: 8, image: 'src/assets/SelectedProjects/EchoElement.png' },
+  { id: 9, image: 'src/assets/SelectedProjects/LuminousLegacy.png' },
+  { id: 10, image: 'src/assets/SelectedProjects/NebulaNetworks.png' },
+  { id: 11, image: 'src/assets/SelectedProjects/SaharaSolar.png' },
+  { id: 12, image: 'src/assets/SelectedProjects/UrbanZenith.png' },
 ];
 
 const LogoGallery: React.FC = () => {

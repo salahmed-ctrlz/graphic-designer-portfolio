@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from 'next-themes';
-import { Sun, Moon, Menu, Instagram, X, Globe, Languages } from 'lucide-react';
+import { Languages, Instagram } from 'lucide-react';
 import { 
   CustomCursor, 
   MobileMenu, 
@@ -12,17 +12,15 @@ import ScrollIndicator from '@/components/ScrollIndicator';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-// Import logo images with correct paths
-// Note: Adjust these paths based on your actual file structure
-import logoBlackImg from '../components/LOGOS/TariqLogoBlack.svg';
-import logoWhiteImg from '../components/LOGOS/TariqLogoWhite.svg';
+// Import logo images from assets
+import logoBlackImg from '@/assets/LOGOS/TariqLogoBlack.svg';
+import logoWhiteImg from '@/assets/LOGOS/TariqLogoWhite.svg';
 
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { theme, setTheme } = useTheme();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { language, translations, dir, toggleLanguage } = useLanguage();
-  const isRTL = dir === 'rtl';
+  const { translations, dir, toggleLanguage } = useLanguage();
   const [logoLoaded, setLogoLoaded] = useState(false);
 
   // Function to scroll to top

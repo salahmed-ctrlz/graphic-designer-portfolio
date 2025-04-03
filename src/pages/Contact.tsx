@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Instagram, Facebook, Linkedin, MessageCircle, Mail, ExternalLink } from 'lucide-react';
 import { fadeUpVariant, staggerContainer } from '@/lib/animations';

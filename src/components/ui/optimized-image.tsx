@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { cn } from '@/lib/utils'
-import { useIntersectionObserver } from '@/lib/utils/performance'
 
 interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string
@@ -20,21 +19,36 @@ const OptimizedImage = ({
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isError, setIsError] = useState(false)
-  const imageRef = useIntersectionObserver(
-    (entry) => {
-      if (entry.isIntersecting && !isLoaded) {
-        const img = new Image()
-        img.src = src
-        img.onload = () => setIsLoaded(true)
-        img.onerror = () => setIsError(true)
+  const ref = useRef<HTMLDivElement>(null)
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isLoaded) {
+          const img = new Image()
+          img.src = src
+          img.onload = () => setIsLoaded(true)
+          img.onerror = () => setIsError(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    const currentRef = ref.current
+    if (currentRef) {
+      observer.observe(currentRef)
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef)
       }
-    },
-    { threshold: 0.1 }
-  )
+    }
+  }, [src, isLoaded])
 
   return (
     <div
-      ref={imageRef}
+      ref={ref}
       className={cn('relative overflow-hidden', className)}
     >
       {/* Placeholder */}

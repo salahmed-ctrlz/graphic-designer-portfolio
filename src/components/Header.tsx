@@ -31,9 +31,9 @@ const Header: React.FC = () => {
         <div className="w-1/4">
           <Link to="/" onClick={handleClick} className="block">
             <img 
-              src={theme === 'dark' ? '/LOGOS/TariqLogoWhite.svg' : '/LOGOS/TariqLogoBlack.svg'} 
+              src={theme === 'dark' ? '@/assets/LOGOS/TariqLogoWhite.svg' : '@/assets/LOGOS/TariqLogoBlack.svg'} 
               alt="Tariq Al Amin Logo" 
-              className="h-8 w-auto"
+              className="h-12 w-auto"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.src = "/placeholder.svg";

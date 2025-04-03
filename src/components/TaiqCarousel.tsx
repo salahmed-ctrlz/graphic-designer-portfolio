@@ -13,7 +13,7 @@ const carouselProjects = [
 ];
 
 const TariqCarousel: React.FC = () => {
-  const { translations, dir } = useLanguage();
+  const { dir } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
 

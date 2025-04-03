@@ -10,4 +10,4 @@ export { default as LogoGallery } from './LogoGallery'
 
 // Utility Pages
 export { default as NotFound } from './NotFound'
-export { default as Index } from './Index' 
+export { default as Index } from './Home' 

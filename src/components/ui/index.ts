@@ -27,7 +27,13 @@ export { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbS
 export { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from './alert-dialog'
 export { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './dialog'
 export { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from './drawer'
-export { HoverCard, HoverCardContent, HoverCardTrigger } from './hover-card'
+
+// Import default exports
+import HoverCard from './hover-card'
+import HoverCardContent from './hover-card'
+import HoverCardTrigger from './hover-card'
+export { HoverCard, HoverCardContent, HoverCardTrigger }
+
 export { Popover, PopoverContent, PopoverTrigger } from './popover'
 export { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from './sheet'
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip'
@@ -40,7 +46,11 @@ export { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 // Feedback Components
 export { Alert, AlertDescription, AlertTitle } from './alert'
 export { Progress } from './progress'
-export { Skeleton } from './skeleton'
+
+// Import default Skeleton export
+import Skeleton from './skeleton'
+export { Skeleton }
+
 export { Toast, ToastAction, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from './toast'
 export { Toaster } from './toaster'
 export { useToast } from './use-toast'
@@ -48,7 +58,17 @@ export { useToast } from './use-toast'
 // Interactive Components
 export { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './carousel'
 export { Collapsible, CollapsibleContent, CollapsibleTrigger } from './collapsible'
-export { Resizable, ResizableHandle, ResizablePanel, ResizablePanelGroup } from './resizable'
+
+// Commented out until resizable components are implemented
+/*
+export { 
+  Resizable, 
+  ResizableHandle, 
+  ResizablePanel, 
+  ResizablePanelGroup 
+} from './resizable'
+*/
+
 export { Slider } from './slider'
 export { ToggleGroup, ToggleGroupItem } from './toggle-group'
 export { Toggle } from './toggle'
@@ -56,5 +76,3 @@ export { Toggle } from './toggle'
 // Data Display Components
 export { Avatar, AvatarFallback, AvatarImage } from './avatar'
 export { Badge, badgeVariants } from './badge'
-export { Calendar } from './calendar'
-export { Chart } from './chart' 

@@ -1,44 +1,38 @@
-import React, { useEffect, useState } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 interface ScrollProgressProps {
-  className?: string
   color?: string
+  height?: number
+  position?: 'top' | 'bottom'
+  className?: string
 }
 
 const ScrollProgress = ({
-  className,
   color = 'hsl(var(--primary))',
+  height = 4,
+  position = 'top',
+  className,
 }: ScrollProgressProps) => {
   const { scrollYProgress } = useScroll()
-  const [isVisible, setIsVisible] = useState(false)
-
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   })
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 100)
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
     <motion.div
       className={cn(
-        'fixed top-0 left-0 right-0 h-1 z-50 origin-left',
-        isVisible ? 'opacity-100' : 'opacity-0',
+        'fixed left-0 right-0 z-50',
+        position === 'top' ? 'top-0' : 'bottom-0',
         className
       )}
       style={{
-        backgroundColor: color,
+        height,
         scaleX,
+        transformOrigin: 'left',
+        backgroundColor: color,
       }}
     />
   )

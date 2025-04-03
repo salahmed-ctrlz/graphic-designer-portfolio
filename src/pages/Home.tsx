@@ -9,16 +9,16 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 // Sample project data with proper image imports
 const projectsData = [
-  { id: 1, title: "Nebula Networks", image: "public/SelectedProjects/NebulaNetworks.png", category: "Brand Identity" },
-  { id: 2, title: "Sahara Solar", image: "public/SelectedProjects/SaharaSolar.png", category: "Brand Identity" },
-  { id: 3, title: "Desert Oasis", image: "public/SelectedProjects/DesertOasis.png", category: "Visual Identity" },
-  { id: 4, title: "Urban Zenith", image: "public/SelectedProjects/UrbanZenith.png", category: "Logo Design" },
-  { id: 5, title: "Luminous Legacy", image: "public/SelectedProjects/LuminousLegacy.png", category: "Visual Identity" },
-  { id: 6, title: "Echo Element", image: "public/SelectedProjects/EchoElement.png", category: "Logo Design" },
+  { id: 1, title: "Nebula Networks", image: "src/assets/SelectedProjects/NebulaNetworks.png", category: "Brand Identity" },
+  { id: 2, title: "Sahara Solar", image: "src/assets/SelectedProjects/SaharaSolar.png", category: "Brand Identity" },
+  { id: 3, title: "Desert Oasis", image: "src/assets/SelectedProjects/DesertOasis.png", category: "Visual Identity" },
+  { id: 4, title: "Urban Zenith", image: "src/assets/SelectedProjects/UrbanZenith.png", category: "Logo Design" },
+  { id: 5, title: "Luminous Legacy", image: "src/assets/SelectedProjects/LuminousLegacy.png", category: "Visual Identity" },
+  { id: 6, title: "Echo Element", image: "src/assets/SelectedProjects/EchoElement.png", category: "Logo Design" },
 ];
 
 const Home: React.FC = () => {
-  const { translations, language } = useLanguage();
+  const { translations } = useLanguage();
   
   return (
     <div className="min-h-screen">
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
                       className="w-full h-full object-cover transition-all duration-500"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = "/placeholder.svg";
+                        target.src = "@/assets/placeholder.svg";
                       }}
                     />
                     <div className="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-white">
@@ -151,9 +151,9 @@ const Home: React.FC = () => {
                 transition={{ duration: 0.6 }}
               >
                 <img 
-                  src="public/LOGOS/LOGOBlueprint.png" 
-                  alt="Logo Design Blueprint" 
-                  className="w-full h-auto"
+                  src="src/assets/LOGOS/LOGOBlueprint.png"
+                  alt="Logo Blueprint"
+                  className="w-full h-full object-contain"
                 />
               </motion.div>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Facebook, Linkedin, MessageCircle, Mail, MapPin, Clock, ExternalLink } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, MessageCircle, Mail, MapPin, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'; // Assuming you're using shadcn/ui
 

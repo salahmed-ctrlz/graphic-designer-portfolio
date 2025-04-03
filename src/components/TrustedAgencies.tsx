@@ -1,14 +1,14 @@
 import { useTheme } from 'next-themes';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 // Updated agency data with proper image paths
 const agencies = [
-  { id: 1, name: 'Creative Minds', logoLight: 'public/LOGOS/CreativeMindsBlack.svg', logoDark: 'public/LOGOS/CreativeMindsWhite.svg' },
-  { id: 2, name: 'Digital Bridge', logoLight: 'public/LOGOS/DigitalBridgeBlack.svg', logoDark: 'public/LOGOS/DigitalBridgeWhite.svg' },
-  { id: 3, name: 'Global Vision', logoLight: 'public/LOGOS/GlobalVisionBlack.svg', logoDark: 'public/LOGOS/GlobalVisionWhite.svg' },
-  { id: 4, name: 'Urban Design', logoLight: 'public/LOGOS/UrbanDesignBlack.svg', logoDark: 'public/LOGOS/UrbanDesignWhite.svg' },
+  { id: 1, name: 'Creative Minds', logoLight: 'src/assets/LOGOS/CreativeMindsBlack.svg', logoDark: 'src/assets/LOGOS/CreativeMindsWhite.svg' },
+  { id: 2, name: 'Digital Bridge', logoLight: 'src/assets/LOGOS/DigitalBridgeBlack.svg', logoDark: 'src/assets/LOGOS/DigitalBridgeWhite.svg' },
+  { id: 3, name: 'Global Vision', logoLight: 'src/assets/LOGOS/GlobalVisionBlack.svg', logoDark: 'src/assets/LOGOS/GlobalVisionWhite.svg' },
+  { id: 4, name: 'Urban Design', logoLight: 'src/assets/LOGOS/UrbanDesignBlack.svg', logoDark: 'src/assets/LOGOS/UrbanDesignWhite.svg' },
 ];
 
 const TrustedAgencies = () => {

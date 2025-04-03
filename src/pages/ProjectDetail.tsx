@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import ScrollProgress from '@/components/ui/scroll-progress';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -16,9 +16,9 @@ const projectsData = [
     client: "Nebula Networks",
     description: "A futuristic brand identity for a cutting-edge communications startup. The design evokes cosmic imagery and interconnected digital networks, reflecting innovation and the vastness of the digital universe.",
     images: [
-      "public/SelectedProjects/NebulaNetworks.png",
-      "public/ProjectDetails/NebulaNetworks/1.png",
-      "public/ProjectDetails/NebulaNetworks/2.png",
+      "src/assets/SelectedProjects/NebulaNetworks.png",
+      "@/assets/ProjectDetails/NebulaNetworks/1.png",
+      "@/assets/ProjectDetails/NebulaNetworks/2.png",
     ]
   },
   {
@@ -30,9 +30,9 @@ const projectsData = [
     client: "Sahara Solar",
     description: "A dynamic visual identity for a renewable energy company. The design blends modern minimalism with warm, desert-inspired tones, capturing the essence of sustainable energy in a sun-soaked landscape.",
     images: [
-      "public/SelectedProjects/SaharaSolar.png",
-      "public/ProjectDetails/SaharaSolar/1.png",
-      "public/ProjectDetails/SaharaSolar/2.png",
+      "src/assets/SelectedProjects/SaharaSolar.png",
+      "@/assets/ProjectDetails/SaharaSolar/1.png",
+      "@/assets/ProjectDetails/SaharaSolar/2.png",
     ]
   },
   {
@@ -44,9 +44,9 @@ const projectsData = [
     client: "Desert Oasis Resorts",
     description: "An inviting and sophisticated visual identity for a luxury boutique hotel set in the desert. The design merges contemporary aesthetics with traditional Arabian elegance, evoking a serene, rejuvenating escape.",
     images: [
-      "public/SelectedProjects/DesertOasis.png",
-      "public/ProjectDetails/DesertOasis/1.png",
-      "public/ProjectDetails/DesertOasis/2.png",
+      "src/assets/SelectedProjects/DesertOasis.png",
+      "@/assets/ProjectDetails/DesertOasis/1.png",
+      "@/assets/ProjectDetails/DesertOasis/2.png",
     ]
   },
   {
@@ -58,9 +58,9 @@ const projectsData = [
     client: "Urban Zenith Architects",
     description: "A sleek and minimalist logo design for an urban architecture firm. It symbolizes upward momentum and modernity, perfectly capturing the firm's focus on sustainable, innovative building design.",
     images: [
-      "public/SelectedProjects/UrbanZenith.png",
-      "public/ProjectDetails/UrbanZenith/1.png",
-      "public/ProjectDetails/UrbanZenith/2.png",
+      "src/assets/SelectedProjects/UrbanZenith.png",
+      "@/assets/ProjectDetails/UrbanZenith/1.png",
+      "@/assets/ProjectDetails/UrbanZenith/2.png",
     ]
   },
   {
@@ -72,9 +72,9 @@ const projectsData = [
     client: "Luminous Legacy Museum",
     description: "A refined visual identity for a historical museum that combines contemporary design elements with a deep sense of heritage. The project tells a story of legacy through clean, elegant visuals.",
     images: [
-      "public/SelectedProjects/LuminousLegacy.png",
-      "public/ProjectDetails/LuminousLegacy/1.png",
-      "public/ProjectDetails/LuminousLegacy/2.png",
+      "src/assets/SelectedProjects/LuminousLegacy.png",
+      "@/assets/ProjectDetails/LuminousLegacy/1.png",
+      "@/assets/ProjectDetails/LuminousLegacy/2.png",
     ]
   },
   {
@@ -86,20 +86,29 @@ const projectsData = [
     client: "Echo Element Tech",
     description: "A vibrant, abstract logo design for an audio technology startup. The design uses dynamic, flowing shapes to represent sound waves and digital energy, making it both modern and memorable.",
     images: [
-      "public/SelectedProjects/EchoElement.png",
-      "public/ProjectDetails/EchoElement/1.png",
-      "public/ProjectDetails/EchoElement/2.png",
+      "src/assets/SelectedProjects/EchoElement.png",
+      "@/assets/ProjectDetails/EchoElement/1.png",
+      "@/assets/ProjectDetails/EchoElement/2.png",
     ]
   },
 ];
 
+// Assuming you have a type for your project
+interface Project {
+  id: number;
+  // other properties...
+}
+
 const ProjectDetail: React.FC = () => {
-  const { translations, language } = useLanguage();
+  const { translations, language, dir } = useLanguage();
   const { id } = useParams<{ id: string }>();
   const currentProject = projectsData.find(p => p.id === Number(id));
   const currentIndex = projectsData.findIndex(p => p.id === Number(id));
   const prevProject = currentIndex > 0 ? projectsData[currentIndex - 1] : projectsData[projectsData.length - 1];
   const nextProject = currentIndex < projectsData.length - 1 ? projectsData[currentIndex + 1] : projectsData[0];
+  
+  // Determine which chevron to use based on language direction
+  const BackChevron = dir === 'rtl' ? ChevronRight : ChevronLeft;
   
   if (!currentProject) {
     return <div>{translations.projectDetail.notFound}</div>;
@@ -110,7 +119,7 @@ const ProjectDetail: React.FC = () => {
     if (language === 'en') return currentProject;
     
     const translatedProjects = translations.projectDetail.projects;
-    const translatedProject = translatedProjects.find(p => p.id === currentProject.id);
+    const translatedProject = translatedProjects.find((p: Project) => p.id === currentProject.id);
     
     if (!translatedProject) return currentProject;
     
@@ -127,15 +136,24 @@ const ProjectDetail: React.FC = () => {
   return (
     <div className="min-h-screen">
       <ScrollProgress />
-      {/* Go Back Link */}
-      <div className="container-custom py-4">
-        <Link to="/selected-work/" className="flex items-center text-gray-300 hover:text-white transition-colors">
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          <span>{translations.projectDetail.goBack}</span>
+      
+      {/* Back Button at the Top */}
+      <div className="mt-20 mb-12">
+        <Link 
+          to="/selected-work" 
+          className="inline-flex items-center text-sm text-primary hover:text-primary/80 mb-4 group"
+        >
+          <BackChevron 
+            className={`w-4 h-4 ${dir === 'rtl' ? 'ml-2' : 'mr-2'} text-primary group-hover:${dir === 'rtl' ? 'translate-x-1' : '-translate-x-1'} transition-transform`} 
+          />
+          <span className="text-sm font-medium">
+            {language === 'ar' ? 'العودة إلى المشاريع المختارة' : 'Back to Selected Projects'}
+          </span>
         </Link>
       </div>
+      
       {/* Hero Section */}
-      <section className="pt-32 pb-16">
+      <section className="pt-10 pb-16">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -217,7 +235,7 @@ const ProjectDetail: React.FC = () => {
                 <h3 className="text-xl font-medium">{prevProject.title}</h3>
                 <p className="text-sm text-muted-foreground">
                   {language === 'en' ? prevProject.subtitle : 
-                    translations.projectDetail.projects.find(p => p.id === prevProject.id)?.subtitle || prevProject.subtitle}
+                    translations.projectDetail.projects.find((p: Project) => p.id === prevProject.id)?.subtitle || prevProject.subtitle}
                 </p>
               </div>
             </Link>
@@ -230,7 +248,7 @@ const ProjectDetail: React.FC = () => {
                 <h3 className="text-xl font-medium">{nextProject.title}</h3>
                 <p className="text-sm text-muted-foreground">
                   {language === 'en' ? nextProject.subtitle : 
-                    translations.projectDetail.projects.find(p => p.id === nextProject.id)?.subtitle || nextProject.subtitle}
+                    translations.projectDetail.projects.find((p: Project) => p.id === nextProject.id)?.subtitle || nextProject.subtitle}
                 </p>
               </div>
               <ArrowRight className="w-6 h-6 mt-1 group-hover:translate-x-2 transition-transform" />

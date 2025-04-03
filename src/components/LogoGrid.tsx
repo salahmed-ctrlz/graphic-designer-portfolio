@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from "react";
 
 interface LogoGridProps {
@@ -8,10 +7,9 @@ interface LogoGridProps {
     text?: string;
     background?: string;
   }>;
-  columns?: number;
 }
 
-const LogoGrid = ({ logos, columns = 5 }: LogoGridProps) => {
+const LogoGrid = ({ logos }: LogoGridProps) => {
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

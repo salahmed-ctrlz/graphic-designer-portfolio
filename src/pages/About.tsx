@@ -17,8 +17,8 @@ import {
   SiAdobexd
 } from 'react-icons/si';
 
-const About = () => {
-  const { translations, dir } = useLanguage();
+const About: React.FC = () => {
+  const { translations } = useLanguage();
   
   // Design tools with icons, names, and colors
   const designTools = [
@@ -112,7 +112,7 @@ const About = () => {
             >
               <div className="relative w-full h-full group">
                 <img
-                  src="public/Portrait/AboutMePortrait.png"
+                  src="src/assets/Portrait/AboutMePortrait.png"
                   alt={translations.about.portraitAlt}
                   className="w-full h-full object-cover rounded-lg transition-all duration-750 grayscale-[0.7] group-hover:grayscale-0 group-hover:brightness-110"
                   style={{ 
